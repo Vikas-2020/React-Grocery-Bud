@@ -1,0 +1,212 @@
+/* Reset + Fonts */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #f0f4f8;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+}
+
+/* Main Section */
+.section-center {
+  width: 90vw;
+  max-width: 500px;
+  margin: 10rem auto;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Form */
+.grocery-form h3 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.form-control {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.grocery {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+}
+
+.grocery:focus {
+  border-color: #3b82f6;
+}
+
+.submit-btn {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.submit-btn:hover {
+  background: #2563eb;
+}
+
+/* List Container */
+.grocery-container {
+  margin-top: 2rem;
+}
+
+.grocery-list {
+  list-style: none;
+  padding: 0;
+}
+
+/* Individual Item */
+.grocery-item {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  margin-bottom: 0.75rem;
+  padding: 0.75rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.2s ease;
+}
+
+.item-content {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.item-content input[type="checkbox"] {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.item-content span {
+  font-size: 1rem;
+  color: #333;
+}
+
+.item-content span.completed {
+  text-decoration: line-through;
+  color: #9ca3af;
+}
+
+/* Delete Button */
+.delete-btn {
+  background: none;
+  border: none;
+  color: #ef4444;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: color 0.3s;
+}
+
+.delete-btn:hover {
+  color: #dc2626;
+}
+
+.toast-container {
+  position: fixed;
+  top: 20px; /* Start a little from the top */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: 100%;
+  max-width: 400px; /* Set a max width for the toasts */
+}
+
+.toast {
+  position: relative;
+  top: 10px;
+  left: 50%;
+  background-color: #333;
+  color: white;
+  padding: 10px 20px 16px; /* extra bottom padding for timer space */
+  border-radius: 8px;
+  z-index: 1000;
+  min-width: 250px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  margin-bottom: 10px; /* Add space between toasts */
+  animation: slideShakeIn 0.6s ease forwards, fadeOut 0.6s ease forwards 4.5s;
+}
+
+/* Toast Close Button */
+.toast .close-btn {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* Timer */
+.timer {
+  margin-top: 8px;
+  height: 4px;
+  border-radius: 2px;
+  width: 100%;
+  animation: timerAnimation 5s linear forwards;
+}
+
+@keyframes timerAnimation {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+} 
+
+/* Entrance Animation: Slide from top with shake */
+@keyframes slideShakeIn {
+  0% {
+    transform: translateX(-50%) translateY(-100px) rotate(0deg);
+    opacity: 0;
+  }
+  30% {
+    transform: translateX(-50%) translateY(10px) rotate(5deg);
+    opacity: 1;
+  }
+  60% {
+    transform: translateX(-50%) translateY(0px) rotate(-5deg);
+  }
+  80% {
+    transform: translateX(-50%) translateY(5px) rotate(3deg);
+  }
+  100% {
+    transform: translateX(-50%) translateY(0px) rotate(0deg);
+  }
+}
+
+/* Exit Animation: Fade out and move up */
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0px) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-50px) scale(0.95);
+  }
+}
