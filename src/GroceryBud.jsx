@@ -1,10 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./GroceryBud.css";
 
 const GroceryBud = () => {
   const [item, setItem] = useState("");
   const [list, setList] = useState([]);
   const [toasts, setToasts] = useState([]);
+
+  // Load the grocery list from localStorage when the component mounts
+  useEffect(() => {
+    const storedList = JSON.parse(localStorage.getItem("groceryList"));
+    if (storedList) setList(storedList);
+  }, []);
+
+  // Save the grocery list to localStorage whenever it changes
+  useEffect(() => {
+    if (list.length > 0) {
+      localStorage.setItem("groceryList", JSON.stringify(list));
+    }
+  }, [list]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
